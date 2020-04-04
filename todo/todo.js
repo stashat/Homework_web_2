@@ -1,6 +1,7 @@
 var form = document.getElementById("addForm");
 var itemList = document.getElementById("items");
 var filter = document.getElementById("filter");
+document.cookie = 'tsa=iojdr'
 // Form submit event
 form.addEventListener("submit", addItem);
 // Delete event
@@ -9,6 +10,8 @@ itemList.addEventListener("click", removeItem);
 filter.addEventListener("keyup", filterItems);
 filter.addEventListener("keyup", ac);
 // Add item
+window.addEventListener("load", load_data, false);
+
 function addItem(e) {
   e.preventDefault();
   //Get input value
@@ -30,6 +33,7 @@ function addItem(e) {
   li.appendChild(deleteBtn);
   // Append li to list
   itemList.appendChild(li);
+  save_data();
 }
 }
 
@@ -39,6 +43,7 @@ function removeItem(e) {
     if (confirm("Are you sure?")) {
       var li = e.target.parentElement;
       itemList.removeChild(li);
+      save_data();
     }
   }
 }
@@ -55,6 +60,8 @@ function filterItems(e) {
   // Convert HTMLCollection to an array
   Array.from(items).forEach(function(item) {
     var itemName = item.firstChild.textContent;
+    // document.cookie = 'name=' + itemName + ';'
+    localStorage.setItem('one', itemName)
     if (itemName.toLowerCase().indexOf(text) != -1) {
       item.style.display = "block";
     } else {
@@ -64,7 +71,7 @@ function filterItems(e) {
 }
 
 
-  
+
  function ac(e) { 
     var items = itemList.getElementsByTagName("li");
     document.getElementById('datalist').innerHTML = ''; 
@@ -80,9 +87,26 @@ function filterItems(e) {
      } )
     }
 
-function setCookies(cname){
-  Array.from(items).forEach(function(item) {
-    var itemName = item.firstChild.textContent;
-    document.cookie = cname +': ' +itemName
-  })
+
+
+// function setCookies(){
+//   Array.from(items).forEach(function(item) {
+//     var itemName = item.firstChild.textContent;
+//     document.cookie = 'name=' + itemName + ';'
+
+//   })
+// }
+
+
+function save_data(){
+  localStorage.setItem("items", document.getElementById("items").innerHTML);
+}
+
+function load_data(){
+  if(localStorage.getItem("items")){
+  document.getElementById("items").innerHTML = localStorage.getItem("items").toString();
+  }else{
+      document.getElementById("items").innerHTML = '<li class="list-group-item">Item 1 <button class="btn btn-danger btn-sm float-right delete">X</button></li><li class="list-group-item">Item 2 <button class="btn btn-danger btn-sm float-right delete">X</button></li><li class="list-group-item">Item 3 <button class="btn btn-danger btn-sm float-right delete">X</button></li><li class="list-group-item">Item 4 <button class="btn btn-danger btn-sm float-right delete">X</button></li>';
+  }
+  listS.innerHTML = "";
 }
