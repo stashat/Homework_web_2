@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro clock</title>
+    <title id="title"></title>
     <link rel="stylesheet" href="pomodoro.css">
+    <link rel="icon" href="tomato.png">
 </head>
 <body>
     <script src="pomodoro.js"></script>
     <div class="nav">
-        <ul>
-            <li class="tab">Pomodoro</li>
-            <li class="tab">Short Break</li>
-            <li class="tab">Long Break</li>
-        </ul>
+        <button class="tab" id="pomodoro">Pomodoro</button>
+        <button class="tab" id="shortB">Short Break</button>
+        <button class='tab' id="longB">Long Break</button>
     </div>
-    <div class="clock">
-
+    <div class="clock" id="MyClockDisplay">
+        00:00
     </div>
-    <div class="buttons">
-        <div class="start">Start</div>
-        <div class="stop">Stop</div>
-        <div class="reset">Reset</div>
+    <div class="buttons" id="buttons">
+        <button class="start" id="start">Start</button>
+        <button class="stop"  id="stop">Stop</button>
+        <button class="reset" id="reset">Reset</button>
     </div>
+    <script src="pomodoro.js"></script>
 </body>
 </html>
