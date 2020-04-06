@@ -1,0 +1,36 @@
+
+.form{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(185, 213, 223);
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.box{
+    background-color: lightgray;
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    font-size: 20pt;
+    text-align: center;
+}
+.boxes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.addBox{
+    padding: 5px 10px 5px 10px;
+    background-color: lightpink;
+    margin: 5px;
+    font-size: 20pt;
+    color: white;
+}
+.addBox:hover{
+    background-color: rgb(255, 166, 179);
+}
